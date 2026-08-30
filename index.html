@@ -89,10 +89,11 @@
         <button onclick="voiceSearch()"><i class="fas fa-microphone"></i></button>
     </div>
     <div class="header-right">
-        <button class="icon-btn" onclick="goHome()" title="होम"><i class="fas fa-home"></i></button>
-        <button class="icon-btn" onclick="openAlarm()" title="ध्यान अलार्म"><i class="fas fa-clock"></i></button>
-        <button class="icon-btn" onclick="openCalendar()" title="बौद्ध कैलेंडर"><i class="fas fa-calendar-alt"></i></button>
-    </div>
+    <button class="icon-btn" onclick="toggleFullscreen()" title="फुल स्क्रीन"><i class="fas fa-expand"></i></button>
+    <button class="icon-btn" onclick="goHome()" title="होम"><i class="fas fa-home"></i></button>
+    <button class="icon-btn" onclick="openAlarm()" title="ध्यान अलार्म"><i class="fas fa-clock"></i></button>
+    <button class="icon-btn" onclick="openCalendar()" title="बौद्ध कैलेंडर"><i class="fas fa-calendar-alt"></i></button>
+</div>
 </header>
 
 <div class="developer-bar">
@@ -217,7 +218,14 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
         fetchVideos(category);
     }
-
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+}
+    
     function goHome() {
         document.getElementById('searchInput').value = '';
         let randomQuery = commonSearches[Math.floor(Math.random() * commonSearches.length)];
